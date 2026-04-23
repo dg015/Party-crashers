@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotationSpeed;
 
 
+    [Header("items")]
+    [SerializeField] public Transform itemHoldLocation;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

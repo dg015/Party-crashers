@@ -2,7 +2,7 @@ using UnityEngine;
 
 interface Iinteractable
 {
-    public void Interact();
+    public void Interact(GameObject interactor);
 }
 
 
@@ -11,6 +11,8 @@ public class Interactor : MonoBehaviour
 
     [SerializeField] private Transform source;
     [SerializeField] private float interactRange;
+    [SerializeField] private GameObject heldObject;
+    [SerializeField] float throwForce =3;
 
     public void interact()
     {
@@ -19,9 +21,39 @@ public class Interactor : MonoBehaviour
         {
             if(hitInfo.collider.gameObject.TryGetComponent(out Iinteractable interactObj))
             {
-                interactObj.Interact();
+                interactObj.Interact(gameObject);
+                if(hitInfo.transform.gameObject.GetComponent<Item>())
+                {
+                    heldObject = hitInfo.transform.gameObject;
+                }
             }
         }
+    }
+
+
+
+
+    public void throwObject()
+    {
+        if (heldObject != null)
+        {
+            //clear parent
+            heldObject.transform.SetParent(null);
+
+            //throw object
+            Rigidbody objectRb = heldObject.GetComponent<Rigidbody>();
+            objectRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+
+            //unfreeze everything
+
+            objectRb.constraints = RigidbodyConstraints.None;
+
+            //reset it back to none
+            heldObject = null;
+
+            
+        }
+
     }
 
 
