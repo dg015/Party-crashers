@@ -1,23 +1,30 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody playerRB;
 
-
-    [Header("new Input system")]
+    [Header("Componenets")]
+    [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerInput playerInputComponent;
-    [SerializeField] private Vector3 playerInput;
+    [SerializeField] private GameObject playerModel;
+
+ 
 
 
     [Header("Locomotion ")]
+    [SerializeField] private Vector3 playerInput;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float acceleration;
     [SerializeField] private float maxAccelerationForce;
 
     [SerializeField] private Transform orientation;
 
+
+    [Header("Rotation")]
+    Quaternion targetRotation;
+    [SerializeField] private float rotationSpeed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,7 +35,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+        RotatePlayerModel();
     }
 
 
@@ -51,16 +58,29 @@ public class PlayerController : MonoBehaviour
         
 
         Vector3 targetVelocity = moveDirection * maxSpeed;
-        Vector3 neededAcceleration = ((targetVelocity - playerRB.linearVelocity) / Time.fixedDeltaTime);
+        Vector3 neededAcceleration = ((targetVelocity - rb.linearVelocity) / Time.fixedDeltaTime);
 
         neededAcceleration = Vector3.ClampMagnitude(neededAcceleration, acceleration);
 
-        playerRB.AddForce(Vector3.Scale(neededAcceleration * playerRB.mass, new Vector3(1, 1, 1)));
+        rb.AddForce(Vector3.Scale(neededAcceleration * rb.mass, new Vector3(1, 1, 1)));
 
         Debug.Log(neededAcceleration);
 
     }
 
+    //PLANO CARTESIANO, PEGA AS COORDENADAS, FAZ UM ATAN2 E APPLICA ESSE GRAU COMO AONDE DEVE OLHAR
+    private void RotatePlayerModel()
+    {
+
+        if (playerInput.sqrMagnitude < 0.01f)
+            return;
+        float angle = Mathf.Atan2(playerInput.x, playerInput.z) * Mathf.Rad2Deg;
+        angle += 90;
+
+        playerModel.transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+
+
+    }
 
 
 }
