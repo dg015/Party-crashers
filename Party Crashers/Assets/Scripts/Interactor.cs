@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 interface Iinteractable
@@ -14,6 +15,8 @@ public class Interactor : MonoBehaviour
     [SerializeField] private GameObject heldObject;
     [SerializeField] float throwForce =3;
 
+    [SerializeField] private bool canDrop;
+
     public void interact()
     {
         Ray ray = new Ray(source.position, -source.transform.right);
@@ -25,24 +28,42 @@ public class Interactor : MonoBehaviour
                 if(hitInfo.transform.gameObject.GetComponent<Item>())
                 {
                     heldObject = hitInfo.transform.gameObject;
+                    StartCoroutine(dropCoroutine());
                 }
             }
         }
     }
 
 
+    private IEnumerator dropCoroutine()
+    {
+        yield return new WaitForSeconds(0.25f);
+        if (heldObject != null)
+        {
+            canDrop = true;
+        }
+
+    }
 
 
-    public void throwObject()
+    public void drop()
+    {
+        if(canDrop) 
+            throwObject(1);
+    }
+
+    public void throwObject(float force)
     {
         if (heldObject != null)
         {
+            canDrop = false;
+
             //clear parent
             heldObject.transform.SetParent(null);
 
             //throw object
             Rigidbody objectRb = heldObject.GetComponent<Rigidbody>();
-            objectRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+            objectRb.AddForce(-source.right * force, ForceMode.Impulse);
 
             //unfreeze everything
 
