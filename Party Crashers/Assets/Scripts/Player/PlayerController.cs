@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     Quaternion targetRotation;
     [SerializeField] private float rotationSpeed;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -64,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(Vector3.Scale(neededAcceleration * rb.mass, new Vector3(1, 1, 1)));
 
-        Debug.Log(neededAcceleration);
+        
 
     }
 
@@ -81,6 +82,4 @@ public class PlayerController : MonoBehaviour
 
 
     }
-
-
 }
