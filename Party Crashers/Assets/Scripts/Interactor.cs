@@ -46,6 +46,18 @@ public class Interactor : MonoBehaviour
     }
 
 
+
+    public void consumeItem()
+    {
+        Item item = heldObject.GetComponent<Item>();
+        if (item.consumable == true)
+        {
+            item.consume(gameObject);
+
+        }
+    }
+
+
     public void drop()
     {
         if(canDrop) 

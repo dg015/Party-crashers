@@ -9,7 +9,8 @@ public class Item : MonoBehaviour, Iinteractable
     [SerializeField] private bool isBeingHeld;
     [SerializeField] private GameObject player;
     [SerializeField] private Rigidbody rb;
-    
+
+    [SerializeField] public bool consumable;
 
 
     public void Interact(GameObject interactor)
@@ -20,7 +21,12 @@ public class Item : MonoBehaviour, Iinteractable
     }
 
 
- 
+    public void consume(GameObject target)
+    {
+        //do effects here
+
+        Destroy(gameObject, 1f);
+    }
 
     private void holdItem()
     {
@@ -31,8 +37,6 @@ public class Item : MonoBehaviour, Iinteractable
         transform.position = itemHoldLocation.position;
         transform.SetParent(itemHoldLocation.transform);
         rb.constraints = RigidbodyConstraints.FreezeAll;
-        
-
 
     }
 
