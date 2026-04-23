@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
     public void checkHorizontalInput(InputAction.CallbackContext context)
     {
-        Debug.Log("reading");
+        
         playerInput = context.ReadValue<Vector3>();
 
     }
@@ -59,7 +59,10 @@ public class PlayerController : MonoBehaviour
         
 
         Vector3 targetVelocity = moveDirection * maxSpeed;
-        Vector3 neededAcceleration = ((targetVelocity - rb.linearVelocity) / Time.fixedDeltaTime);
+        //to stop fighting gravity (slow falling)
+        Vector3 flatVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+
+        Vector3 neededAcceleration = ((targetVelocity - flatVelocity) / Time.fixedDeltaTime);
 
         neededAcceleration = Vector3.ClampMagnitude(neededAcceleration, acceleration);
 
