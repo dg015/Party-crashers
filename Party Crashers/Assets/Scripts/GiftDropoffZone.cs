@@ -4,7 +4,7 @@ public class GiftDropoffZone : MonoBehaviour
 {
     [SerializeField] private LayerMask mask;
     [SerializeField] private BoxCollider col;
-
+    [SerializeField] private string tagName;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,7 +20,7 @@ public class GiftDropoffZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Gift"))
+        if(other.gameObject.CompareTag(tagName))
         {
             //destroy gift
             Destroy(other.gameObject, 1f);
