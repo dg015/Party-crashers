@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GiftPile : MonoBehaviour , Iinteractable
 {
@@ -18,12 +19,17 @@ public class GiftPile : MonoBehaviour , Iinteractable
     [SerializeField] private float interactTimeout = 0.2f;
     private float interactTimer;
 
+    [Header("UI")]
+    [SerializeField] private Image bar;
+
 
 
     // Update is called once per frame
     void Update()
     {
         currentProgress = Mathf.Clamp(currentProgress, 0, maxTime);
+
+        bar.fillAmount = Mathf.Clamp01(currentProgress / maxTime);
 
         if (interactTimer >0f)
         {
