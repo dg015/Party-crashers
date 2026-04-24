@@ -77,9 +77,10 @@ public class Interactor : MonoBehaviour
             Rigidbody objectRb = heldObject.GetComponent<Rigidbody>();
             objectRb.AddForce(-source.right * force, ForceMode.Impulse);
 
-            //unfreeze everything
+            //unfreeze positions
+            // ~ means everything except this
 
-            objectRb.constraints = RigidbodyConstraints.None;
+            objectRb.constraints &= ~RigidbodyConstraints.FreezePosition;
 
             //reset it back to none
             heldObject = null;
