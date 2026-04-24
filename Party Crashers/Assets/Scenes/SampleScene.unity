@@ -859,6 +859,71 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515014961}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &532403865
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3682894660439981012, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: tagName
+      value: Alcohol
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682894660439981012, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: mask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513612329553042222, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.6193
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513612329553042222, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513612329553042222, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513612329553042222, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513612329553042222, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513612329553042222, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513612329553042222, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513612329553042222, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513612329553042222, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513612329553042222, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426633614191210159, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_Name
+      value: drop off zone (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
 --- !u!1001 &630516780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2565,7 +2630,7 @@ GameObject:
   - component: {fileID: 1811944780}
   m_Layer: 7
   m_Name: alcohol
-  m_TagString: Untagged
+  m_TagString: Alcohol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2930,6 +2995,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3682894660439981012, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: mask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682894660439981012, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: dissapearTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4513612329553042222, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.6193
@@ -2940,7 +3013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4513612329553042222, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.4251
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 4513612329553042222, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2993,6 +3066,7 @@ SceneRoots:
   - {fileID: 1516921551}
   - {fileID: 4909405931897848420}
   - {fileID: 5832046054538545719}
+  - {fileID: 532403865}
   - {fileID: 980501315}
   - {fileID: 1855714213}
   - {fileID: 1811944779}

@@ -5,6 +5,7 @@ public class GiftDropoffZone : MonoBehaviour
     [SerializeField] private LayerMask mask;
     [SerializeField] private BoxCollider col;
     [SerializeField] private string tagName;
+    [SerializeField] private float dissapearTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,7 +24,7 @@ public class GiftDropoffZone : MonoBehaviour
         if(other.gameObject.CompareTag(tagName))
         {
             //destroy gift
-            Destroy(other.gameObject, 1f);
+            Destroy(other.gameObject, dissapearTime);
             
             // increase points here
 
