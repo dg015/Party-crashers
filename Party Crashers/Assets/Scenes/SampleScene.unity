@@ -1992,6 +1992,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084371340}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1096720797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 218551847111407698, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+  m_PrefabInstance: {fileID: 2206798779904824996}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1096720801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096720797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4761c6ae2292a4093699821c2bb954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  maxTime: 2
+  currentProgress: 0
+  interactTimeout: 0.2
+  bar: {fileID: 0}
 --- !u!1 &1207968833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2104,7 +2128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.05}
   m_SizeDelta: {x: 514, y: 289}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1327309240
@@ -2983,7 +3007,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 218551847111407698, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1096720801}
   m_SourcePrefab: {fileID: 100100000, guid: 336265a162432a44491dd68162d24bbb, type: 3}
 --- !u!1001 &4909405931897848420
 PrefabInstance:

@@ -10,12 +10,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerInput playerInputComponent;
     [SerializeField] private GameObject playerModel;
 
- 
-
-
     [Header("Locomotion ")]
     [SerializeField] private Vector3 playerInput;
     [SerializeField] private float maxSpeed;
+    [SerializeField] private float DefaultMaxSpeed;
     [SerializeField] private float acceleration;
     [SerializeField] private float maxAccelerationForce;
 
@@ -33,7 +31,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        DefaultMaxSpeed = maxSpeed;
     }
 
     // Update is called once per frame
@@ -70,22 +68,32 @@ public class PlayerController : MonoBehaviour
         neededAcceleration = Vector3.ClampMagnitude(neededAcceleration, acceleration);
 
         rb.AddForce(Vector3.Scale(neededAcceleration * rb.mass, new Vector3(1, 1, 1)));
+    }
 
-        
+    public void slowDownPlayer(bool isBeingSlowdown, float slowdownSpeed)
+    {
+        float startingMaxSpeed = maxSpeed;
+
+        if(isBeingSlowdown == true)
+        {
+            maxSpeed = maxSpeed - slowdownSpeed;
+        }
+        else if(!isBeingSlowdown)
+        {
+            maxSpeed = DefaultMaxSpeed;
+        }
 
     }
+
 
     //PLANO CARTESIANO, PEGA AS COORDENADAS, FAZ UM ATAN2 E APPLICA ESSE GRAU COMO AONDE DEVE OLHAR
     private void RotatePlayerModel()
     {
-
         if (playerInput.sqrMagnitude < 0.01f)
             return;
         float angle = Mathf.Atan2(playerInput.x, playerInput.z) * Mathf.Rad2Deg;
         angle += 90;
 
         playerModel.transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
-
-
     }
 }
