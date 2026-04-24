@@ -57,7 +57,7 @@ public class Item : MonoBehaviour, Iinteractable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.layer != mask && rb.linearVelocity.magnitude >= breakingSpeed && breakable)
+        if(collision.gameObject.layer != mask && collision.relativeVelocity.magnitude >= breakingSpeed && breakable)
         {
             shatter();
         }
