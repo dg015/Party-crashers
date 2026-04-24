@@ -2297,6 +2297,12 @@ MonoBehaviour:
   player: {fileID: 0}
   rb: {fileID: 0}
   consumable: 0
+  breakable: 0
+  brokenGlass: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  breakingSpeed: 0
 --- !u!54 &1516921556
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2643,6 +2649,12 @@ MonoBehaviour:
   player: {fileID: 0}
   rb: {fileID: 0}
   consumable: 1
+  breakable: 0
+  brokenGlass: {fileID: 218551847111407698, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+  mask:
+    serializedVersion: 2
+    m_Bits: 64
+  breakingSpeed: 0.5
 --- !u!136 &1811944776
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2916,6 +2928,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2206798779904824996
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 218551847111407698, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_Name
+      value: Shattered glass
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473776245598971835, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.9317746
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473776245598971835, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473776245598971835, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.293701
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473776245598971835, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473776245598971835, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473776245598971835, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473776245598971835, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473776245598971835, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473776245598971835, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473776245598971835, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 336265a162432a44491dd68162d24bbb, type: 3}
 --- !u!1001 &4909405931897848420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2990,3 +3059,4 @@ SceneRoots:
   - {fileID: 980501315}
   - {fileID: 1855714213}
   - {fileID: 1811944779}
+  - {fileID: 2206798779904824996}

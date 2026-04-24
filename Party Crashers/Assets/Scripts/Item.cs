@@ -1,3 +1,4 @@
+using UnityEditorInternal;
 using UnityEngine;
 
 
@@ -5,13 +6,19 @@ using UnityEngine;
 
 public class Item : MonoBehaviour, Iinteractable
 {
-
+    [Header("main")]
     [SerializeField] private bool isBeingHeld;
     [SerializeField] private GameObject player;
     [SerializeField] private Rigidbody rb;
 
+    [Header("types")]
     [SerializeField] public bool consumable;
+    [SerializeField] private bool breakable;
 
+    [Header("Breakable")]
+    [SerializeField] private GameObject brokenGlass;
+    [SerializeField] private LayerMask mask;
+    [SerializeField] private float breakingSpeed;
 
     public void Interact(GameObject interactor)
     {
@@ -38,6 +45,22 @@ public class Item : MonoBehaviour, Iinteractable
         transform.SetParent(itemHoldLocation.transform);
         rb.constraints = RigidbodyConstraints.FreezeAll;
 
+    }
+
+    private void shatter()
+    {
+        Instantiate(brokenGlass,transform.position,Quaternion.identity);
+        Destroy (gameObject);
+
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer != mask && rb.linearVelocity.magnitude >= breakingSpeed)
+        {
+            shatter();
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
