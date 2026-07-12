@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class GiftDropoffZone : MonoBehaviour
@@ -13,16 +14,12 @@ public class GiftDropoffZone : MonoBehaviour
         col = gameObject.GetComponent<BoxCollider>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag(tagName))
         {
+            //make cool effect
+            other.transform.DOScale(Vector3.zero, dissapearTime);
             //destroy gift
             Destroy(other.gameObject, dissapearTime);
             

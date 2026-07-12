@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -28,11 +29,13 @@ public class Item : MonoBehaviour, Iinteractable
     }
 
 
-    public void consume(GameObject target)
+    public void consume(GameObject target, float duration)
     {
         //do effects here
-
-        Destroy(gameObject, 1f);
+        transform.DOScale(Vector3.zero, duration).OnComplete(() =>
+        {
+            Destroy(gameObject);
+        });  
     }
 
     private void holdItem()
@@ -47,7 +50,7 @@ public class Item : MonoBehaviour, Iinteractable
 
     }
 
-    private void shatter()
+    private void Shatter()
     {
         Instantiate(brokenGlass,transform.position,Quaternion.identity);
         Destroy (gameObject);
@@ -59,7 +62,7 @@ public class Item : MonoBehaviour, Iinteractable
     {
         if(collision.gameObject.layer != mask && collision.relativeVelocity.magnitude >= breakingSpeed && breakable)
         {
-            shatter();
+            Shatter();
         }
     }
 
