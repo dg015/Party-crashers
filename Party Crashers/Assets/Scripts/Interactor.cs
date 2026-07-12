@@ -14,10 +14,11 @@ public class Interactor : MonoBehaviour
 {
     [Header("Box cast")]
     [SerializeField] private Transform m_source;
-    [SerializeField] private Vector3 m_halfExtends = new Vector3(.5f,.5f,.5f);
+    [SerializeField] private Vector3 m_halfExtends = new Vector3(.5f, .5f, .5f);
     [SerializeField] private LayerMask m_layerMask;
 
-
+    [Header("Drop Coroutin")]
+    [SerializeField] private Coroutine m_dropCoroutine;
 
     [SerializeField] private float interactRange;
     [SerializeField] private GameObject heldObject;
@@ -29,6 +30,10 @@ public class Interactor : MonoBehaviour
     [SerializeField] private float m_consuptionDuration;
     public void interact()
     {
+        Debug.Log(m_dropCoroutine);
+        if (m_dropCoroutine != null)
+            return;
+
         Collider[] BoxCol = Physics.OverlapBox(m_source.position, m_halfExtends, Quaternion.identity, m_layerMask);
 
         foreach (Collider col in BoxCol)
@@ -39,28 +44,11 @@ public class Interactor : MonoBehaviour
                 if (col.transform.gameObject.GetComponent<Item>())
                 {
                     heldObject = col.transform.gameObject;
-                    StartCoroutine(dropCoroutine());
+                    m_dropCoroutine = StartCoroutine(dropCoroutine());
                 }
             }
 
         }
-
-
-        /*
-        Ray ray = new Ray(m_source.position, -m_source.transform.right);
-        if(Physics.Raycast(ray,out RaycastHit hitInfo,interactRange))
-        {
-            if(hitInfo.collider.gameObject.TryGetComponent(out Iinteractable interactObj))
-            {
-                interactObj.Interact(gameObject);
-                if(hitInfo.transform.gameObject.GetComponent<Item>())
-                {
-                    heldObject = hitInfo.transform.gameObject;
-                    StartCoroutine(dropCoroutine());
-                }
-            }
-        }
-        */
     }
 
 
@@ -71,6 +59,7 @@ public class Interactor : MonoBehaviour
         {
             canDrop = true;
         }
+        m_dropCoroutine = null;
     }
 
 
