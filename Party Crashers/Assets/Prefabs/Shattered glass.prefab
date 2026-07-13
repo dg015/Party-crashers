@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4930571982914916335}
   - component: {fileID: 6557845439088788810}
   - component: {fileID: 2539326772004841103}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shattered glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,10 +43,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218551847111407698}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 8507597428776107018}
   - component: {fileID: 3839953198230878898}
   - component: {fileID: 4626336911100244296}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fill bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 1328009244530252782}
   - component: {fileID: 3902008057823323274}
   - component: {fileID: 5117115625039438057}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 2833887139783457024}
   - component: {fileID: 5113372265899189808}
   - component: {fileID: 5854836759244448530}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,6 +318,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -339,9 +341,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &5854836759244448530
 BoxCollider:
@@ -376,7 +380,7 @@ GameObject:
   - component: {fileID: 3965909296831101920}
   - component: {fileID: 1995665892790722284}
   - component: {fileID: 3224571952247296791}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

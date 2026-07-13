@@ -78,7 +78,7 @@ public class Interactor : MonoBehaviour
     public void drop()
     {
         if(canDrop) 
-            throwObject(1);
+            throwObject(throwForce);
     }
 
     public void throwObject(float force)
