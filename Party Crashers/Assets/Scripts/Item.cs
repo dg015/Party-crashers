@@ -2,9 +2,6 @@ using DG.Tweening;
 using UnityEditorInternal;
 using UnityEngine;
 
-
-
-
 public class Item : MonoBehaviour, Iinteractable
 {
     [Header("main")]
@@ -28,6 +25,10 @@ public class Item : MonoBehaviour, Iinteractable
         holdItem();
     }
 
+    public GameObject GetLastPlayer()
+    {
+        return player;
+    }
 
     public void consume(GameObject target, float duration)
     {
