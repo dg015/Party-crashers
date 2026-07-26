@@ -9,9 +9,9 @@ public class GiftDropoffZone : MonoBehaviour
     [SerializeField] private string tagName;
     [SerializeField] private float dissapearTime;
 
-    //scoring
-    public event Action<PlayerScore> GiftDeliveredEvent;
-    [SerializeField] private int taskID;
+    [Header("Scoring")]
+    [SerializeField] private TaskType taskType;
+    public event Action<PlayerScore,TaskType> GiftDeliveredEvent;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,7 +36,7 @@ public class GiftDropoffZone : MonoBehaviour
                 GetComponent<PlayerScore>();
 
             // increase points here
-            GiftDeliveredEvent?.Invoke(player);
+            GiftDeliveredEvent?.Invoke(player,taskType);
         }
     }
 

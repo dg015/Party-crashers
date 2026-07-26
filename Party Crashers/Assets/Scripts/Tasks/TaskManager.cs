@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,11 +34,28 @@ public class TaskManager : MonoBehaviour
         }
     }
 
-
-    private void CheckForActiveTask(PlayerScore player)
+    private void GenerateNewTask()
     {
-        Debug.Log("Task complete");
-        player.UpdateScore(20);
+        int rng = Random.Range(0, m_taskList.Count);
+        
+        for (int i = 0; i < m_taskList.Count; i++) 
+        {
+            m_activeTasks.Add(m_taskList[i]);
+        }
+
+    }
+
+    private void CheckForActiveTask(PlayerScore player,TaskType taskPerformed)
+    {
+        foreach(var task in m_activeTasks)
+        {
+            if(task.taskType == taskPerformed)
+            {
+                player.UpdateScore(task.scoreValue);
+                m_activeTasks.Remove(task);
+                return;
+            }
+        }
     }
 
 }
