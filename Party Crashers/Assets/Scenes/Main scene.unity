@@ -1801,8 +1801,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 948532785}
         m_TargetAssemblyTypeName: Interactor, Assembly-CSharp
-        m_MethodName: drop
-        m_Mode: 1
+        m_MethodName: ChargeThrow
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1877,9 +1877,13 @@ MonoBehaviour:
     m_Bits: 128
   interactRange: 1.21
   heldObject: {fileID: 0}
+  m_currentForceTimer: 0
+  m_maxForceTimer: 3
   throwForce: 10
+  throwForceModifier: 0
   canDrop: 0
   m_consuptionDuration: 0
+  m_isCharging: 0
 --- !u!1 &967089042
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,8 +2073,8 @@ MonoBehaviour:
   giftPrefab: {fileID: 8698997413098384436, guid: 60e11fe2d91fab24a8397b479944a544, type: 3}
   spawnGiftLocation: {fileID: 1640916725}
   shootGiftForce: 5
-  radius: 3
-  maxTime: 4
+  m_giftRandomDirMod: 1.2
+  maxTime: 2
   currentProgress: 0
   interactTimeout: 0.8
   bar: {fileID: 1207968835}
@@ -3428,10 +3432,10 @@ SceneRoots:
   - {fileID: 1659429876}
   - {fileID: 1516921551}
   - {fileID: 4909405931897848420}
+  - {fileID: 980501315}
   - {fileID: 5832046054538545719}
   - {fileID: 532403865}
   - {fileID: 1540234403}
-  - {fileID: 980501315}
   - {fileID: 1855714213}
   - {fileID: 1811944779}
   - {fileID: 630516780}

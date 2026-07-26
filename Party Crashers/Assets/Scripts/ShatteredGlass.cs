@@ -81,7 +81,8 @@ public class ShatteredGlass : MonoBehaviour, Iinteractable
     private void OnDestroy()
     {
         playerDetected = false;
-        recentPlayer.slowDownPlayer(playerDetected,slowdownEffect);
+        if(recentPlayer != null)
+            recentPlayer.slowDownPlayer(playerDetected,slowdownEffect);
        
     }
 
