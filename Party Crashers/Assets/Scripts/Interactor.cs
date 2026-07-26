@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 interface Iinteractable
@@ -16,6 +17,8 @@ public class Interactor : MonoBehaviour
     [SerializeField] private Vector3 m_halfExtends = new Vector3(.5f, .5f, .5f);
     [SerializeField] private LayerMask m_layerMask;
 
+    Collider[] boxColResults = new Collider[3];
+
     [Header("Drop Coroutine")]
     [SerializeField] private Coroutine m_dropCoroutine;
 
@@ -27,11 +30,14 @@ public class Interactor : MonoBehaviour
     [SerializeField] private float m_maxForceTimer;
 
     [SerializeField] float throwForce = 3;
+    [SerializeField] private float throwForceModifier;
 
 
     [SerializeField] private bool canDrop;
 
     [SerializeField] private float m_consuptionDuration;
+
+    [SerializeField] private bool m_isCharging;
 
 
     public void interact()
@@ -40,31 +46,29 @@ public class Interactor : MonoBehaviour
             return;
 
         //Get colliding with overlapbox
-        Collider[] boxColResults = new Collider[3];
+
+
         int hitCount = Physics.OverlapBoxNonAlloc(m_source.position, m_halfExtends, boxColResults,Quaternion.identity, m_layerMask);
-        //Collider[] BoxCol = Physics.OverlapBox(m_source.position, m_halfExtends, Quaternion.identity, m_layerMask);
 
         //Check colllisions if they have the component for interactable object
-        foreach (Collider col in boxColResults)
+        //foreach (Collider col in boxColResults)
+        for (int i = 0; i < hitCount; i++)
         {
-            if(col.gameObject.TryGetComponent(out Iinteractable interactObj))
+            if (boxColResults[i].gameObject.TryGetComponent(out Iinteractable interactObj))
             {
                 interactObj.Interact(gameObject);
-                if (col.transform.gameObject.GetComponent<Item>())
+                if (boxColResults[i].transform.gameObject.GetComponent<Item>())
                 {
-                    heldObject = col.GetComponent<Item>();
+                    heldObject = boxColResults[i].GetComponent<Item>();
                     m_dropCoroutine = StartCoroutine(dropCoroutine());
                 }
             }
 
         }
     }
-
-
     private IEnumerator dropCoroutine()
     {
         yield return new WaitForSeconds(0.25f);
-
         if (heldObject != null)
         {
             canDrop = true;
@@ -82,10 +86,37 @@ public class Interactor : MonoBehaviour
     }
 
 
-    public void drop()
+    private void Update()
     {
-        if(canDrop) 
-            throwObject(throwForce);
+        Throw();
+    }
+
+    private void Throw()
+    {
+        if(m_isCharging && heldObject != null)
+        {
+            m_currentForceTimer += Time.deltaTime;
+            throwForceModifier = Mathf.Clamp(m_currentForceTimer, 0, m_maxForceTimer);
+            Debug.Log("Charging");
+        }
+    }
+
+
+    public void ChargeThrow(InputAction.CallbackContext context)
+    {
+        if (!canDrop)
+            return;
+        
+        //start holding
+        if(context.performed)
+        {
+            m_isCharging = true;
+        }
+        else if( context.canceled)
+        {
+            m_isCharging = false;
+            throwObject(throwForce * throwForceModifier);
+        }
     }
 
     public void throwObject(float force)
@@ -108,8 +139,9 @@ public class Interactor : MonoBehaviour
 
             //reset it back to none
             heldObject = null;
+            m_currentForceTimer = 0; 
+            throwForceModifier = 0;
         }
-
     }
 
 
