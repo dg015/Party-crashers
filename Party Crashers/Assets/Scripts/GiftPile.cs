@@ -1,21 +1,23 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GiftPile : MonoBehaviour , Iinteractable
 {
 
-    [Header("gift spawner")]
+    [Header("Gift spawner")]
     [SerializeField] private GameObject giftPrefab;
     [SerializeField] private Transform spawnGiftLocation;
     [SerializeField] private float shootGiftForce;
-    [SerializeField] private float radius;
 
-    [Header("timer")]
+    [SerializeField] private float m_giftRandomDirMod;
+
+    [Header("Timer")]
     [SerializeField] private float maxTime;
     [SerializeField] private float currentProgress;
 
     //super scuffed solution
-    [Header("interaction timeout")]
+    [Header("Interaction timeout")]
     [SerializeField] private float interactTimeout = 0.2f;
     private float interactTimer;
 
@@ -74,9 +76,17 @@ public class GiftPile : MonoBehaviour , Iinteractable
         GameObject newGift;
         newGift = Instantiate (giftPrefab, spawnGiftLocation.position,Quaternion.identity);
 
-        Rigidbody giftRB = newGift.GetComponent<Rigidbody>();
+        //add silly little animation for the gift to grow on size
+        newGift.transform.localScale = Vector3.zero;
+        newGift.transform.DOScale(Vector3.one, .25f);
 
-        giftRB.AddExplosionForce(shootGiftForce, spawnGiftLocation.up,radius);
+        
+        Rigidbody giftRB = newGift.GetComponent<Rigidbody>();
+        //generate a bit of randomness to go up
+        float RandomnessDirX = Random.Range(-m_giftRandomDirMod, m_giftRandomDirMod);
+        float RandomnessDirZ = Random.Range(-m_giftRandomDirMod, m_giftRandomDirMod);
+
+        giftRB.AddForce(new Vector3 (RandomnessDirX, 1, RandomnessDirZ) * shootGiftForce,ForceMode.Impulse);
     }
 
 }
