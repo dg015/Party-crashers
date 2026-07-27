@@ -2431,8 +2431,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 27c1d5ddb8acb4744a470b2e5cf1d528, type: 2}
   - {fileID: 11400000, guid: 16c25c8ebbc91e849814c2a84b93d2ed, type: 2}
   - {fileID: 11400000, guid: 5058fa1b1664a494dafe8605eae1e1b6, type: 2}
-  m_playerScoresList:
-  - {fileID: 948532786}
+  m_activeTasks: []
+  m_dropOffZones: []
 --- !u!1 &1516921550
 GameObject:
   m_ObjectHideFlags: 0

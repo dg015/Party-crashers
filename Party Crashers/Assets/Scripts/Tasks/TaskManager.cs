@@ -20,6 +20,8 @@ public class TaskManager : MonoBehaviour
         Instance = this;
     }
 
+    private void 
+
     public void AddZoneToList(GiftDropoffZone zone)
     {
         m_dropOffZones.Add(zone);
@@ -34,7 +36,7 @@ public class TaskManager : MonoBehaviour
         }
     }
 
-    private void GenerateNewTask()
+    public void GenerateNewTask()
     {
         int rng = Random.Range(0, m_taskList.Count);
         
@@ -42,7 +44,6 @@ public class TaskManager : MonoBehaviour
         {
             m_activeTasks.Add(m_taskList[i]);
         }
-
     }
 
     private void CheckForActiveTask(PlayerScore player,TaskType taskPerformed)

@@ -15,6 +15,7 @@ MonoBehaviour:
   taskName: Chase the child
   description: One of the little brats is running around! Throw them into the guest
     zone
+  taskType: 1
   scoreValue: 25
   difficulty: 1
   taskIcon: {fileID: 0}

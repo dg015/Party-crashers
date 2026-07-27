@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Task
   taskName: Kick guests out!
   description: Some guests have gotten drunk, kick them out!
+  taskType: 1
   scoreValue: 25
   difficulty: 1
   taskIcon: {fileID: 0}
