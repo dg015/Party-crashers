@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Task
   taskName: Collect gifts
   description: Take gifts from the gift pile and send to drop zone!
+  taskType: 0
   scoreValue: 10
   difficulty: 1
+  timeDuration: 30
   taskIcon: {fileID: 0}

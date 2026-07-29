@@ -17,4 +17,5 @@ MonoBehaviour:
   taskType: 1
   scoreValue: 25
   difficulty: 1
+  timeDuration: 30
   taskIcon: {fileID: 0}

@@ -12,7 +12,7 @@ public class Task : ScriptableObject
 
     public int scoreValue;
     [Range(1,5)] public int difficulty;
-    private int timeDuration;
+    public int timeDuration;
 
     public Sprite taskIcon;
 }
