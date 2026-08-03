@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
 {
-    [SerializeField] private List<Task> m_taskList = new List<Task>();
-    [SerializeField] private List<Task> m_activeTasks = new List<Task>();
+    [SerializeField] private List<TaskScriptableObject> m_taskList = new List<TaskScriptableObject>();
+    [SerializeField] private List<TaskScriptableObject> m_activeTasks = new List<TaskScriptableObject>();
 
     [SerializeField] private List<GiftDropoffZone> m_dropOffZones = new List<GiftDropoffZone>();
     
-
-
     [Header("UI")]
     [SerializeField] private GameObject m_taskUIPrefab;
     [SerializeField] private Transform m_taskUIList;
@@ -59,10 +57,11 @@ public class TaskManager : MonoBehaviour
 
     public void GenerateNewTask()
     {
+        //generate random task and add to the list
         int rng = Random.Range(0, m_taskList.Count);
-
         m_activeTasks.Add(m_taskList[rng]);
 
+        //instantiate the prefab
         GameObject newTaskElement = Instantiate(m_taskUIPrefab, m_taskUIList.position, Quaternion.identity, m_taskUIList);
 
         //Update content from task
@@ -70,8 +69,10 @@ public class TaskManager : MonoBehaviour
 
         //we testing this later
         //newTaskElement.transform.Find("Icon").GetComponent<Image>().sprite = m_taskList[rng].taskIcon;
-    }
 
+        Task newTaskScript = newTaskElement.GetComponent<Task>();
+        newTaskScript.GetTaskData(m_taskList[rng]);
+    }
 
     private void CheckForActiveTask(PlayerScore player,TaskType taskPerformed)
     {
