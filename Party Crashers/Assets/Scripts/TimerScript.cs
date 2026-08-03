@@ -7,6 +7,7 @@ public class TimerScript
     private bool m_isComplete;
     private bool m_isAutoReset;
     private bool m_autoPause;
+    private float m_recentDuration;
 
     public bool Tick(float duration, float deltaTime)
     {
@@ -16,6 +17,8 @@ public class TimerScript
         //if it has autopause and it has already been complete then stop it
         if (m_isComplete && m_autoPause)
             return false;
+
+        m_recentDuration = duration;
 
         m_elapsedTime += deltaTime;
         if (m_elapsedTime >= duration)
@@ -70,5 +73,14 @@ public class TimerScript
     {
         m_elapsedTime = 0;
         m_isComplete = false;
+    }
+
+    public float GetNormalizedProgress()
+    {
+        if (m_recentDuration <= 0)
+            return 0;
+
+        float normalizedTime = m_elapsedTime / m_recentDuration;
+        return normalizedTime;
     }
 }
