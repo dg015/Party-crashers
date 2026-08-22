@@ -155,7 +155,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 336.98, y: 393.6}
+  m_SizeDelta: {x: 318.5, y: 341.5}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4039209
 MonoBehaviour:
@@ -357,10 +357,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1200}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1260,6 +1260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: alcohol drop off zone
       objectReference: {fileID: 0}
+    - target: {fileID: 7426633614191210159, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1276,6 +1280,10 @@ PrefabInstance:
     - target: {fileID: 218551847111407698, guid: 336265a162432a44491dd68162d24bbb, type: 3}
       propertyPath: m_Name
       value: Shattered glass
+      objectReference: {fileID: 0}
+    - target: {fileID: 218551847111407698, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2473776245598971835, guid: 336265a162432a44491dd68162d24bbb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1320,6 +1328,14 @@ PrefabInstance:
     - target: {fileID: 2539326772004841103, guid: 336265a162432a44491dd68162d24bbb, type: 3}
       propertyPath: slowdownEffect
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695936191893583763, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664458957807484617, guid: 336265a162432a44491dd68162d24bbb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2199,6 +2215,7 @@ GameObject:
   - component: {fileID: 980501315}
   - component: {fileID: 980501314}
   - component: {fileID: 980501316}
+  - component: {fileID: 980501317}
   m_Layer: 7
   m_Name: Gift station
   m_TagString: Untagged
@@ -2270,6 +2287,22 @@ MonoBehaviour:
   currentProgress: 0
   interactTimeout: 0.8
   bar: {fileID: 1207968835}
+--- !u!208 &980501317
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980501313}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.35, y: 1.055, z: 1.165}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.36, y: 0, z: 0.33}
+  m_TimeToStationary: 0.5
 --- !u!1 &1084371340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2643,7 +2676,7 @@ Transform:
   m_GameObject: {fileID: 1516921550}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7856653, y: 1.6261325, z: 1.1370062}
+  m_LocalPosition: {x: -1.7856653, y: 2.13, z: 1.1370062}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2837,6 +2870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guest zone
       objectReference: {fileID: 0}
+    - target: {fileID: 7426633614191210159, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3682894660439981012, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
     m_RemovedGameObjects: []
@@ -2964,7 +3001,7 @@ Transform:
   m_GameObject: {fileID: 1710268858}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2567, z: 0}
+  m_LocalPosition: {x: 0, y: -0.57, z: 0}
   m_LocalScale: {x: 1, y: 0.7433, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3065,6 +3102,7 @@ GameObject:
   - component: {fileID: 1807272614}
   - component: {fileID: 1807272613}
   - component: {fileID: 1807272612}
+  - component: {fileID: 1807272616}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -3165,6 +3203,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1807272616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807272611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 70efd7934f669134aa562ce0a7150cae, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &1811944774
 GameObject:
   m_ObjectHideFlags: 0
@@ -3298,7 +3368,7 @@ Transform:
   m_GameObject: {fileID: 1811944774}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.09781586, z: -0, w: 0.99520457}
-  m_LocalPosition: {x: 8.762227, y: 2.8461788, z: 0.48}
+  m_LocalPosition: {x: 8.762227, y: 0.62, z: 0.48}
   m_LocalScale: {x: 0.46083, y: 0.46083, z: 0.46083}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3593,7 +3663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2060446228974692792, guid: 60e11fe2d91fab24a8397b479944a544, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6261325
+      value: 1.93
       objectReference: {fileID: 0}
     - target: {fileID: 2060446228974692792, guid: 60e11fe2d91fab24a8397b479944a544, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3631,6 +3701,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gift
       objectReference: {fileID: 0}
+    - target: {fileID: 8698997413098384436, guid: 60e11fe2d91fab24a8397b479944a544, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3648,13 +3722,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guest
       objectReference: {fileID: 0}
+    - target: {fileID: 3795669386942051715, guid: 41672765a2cf9e24dbbff797c97e6d98, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197498110698235292, guid: 41672765a2cf9e24dbbff797c97e6d98, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8399240550256428895, guid: 41672765a2cf9e24dbbff797c97e6d98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.67
       objectReference: {fileID: 0}
     - target: {fileID: 8399240550256428895, guid: 41672765a2cf9e24dbbff797c97e6d98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.27
+      value: 1.44
       objectReference: {fileID: 0}
     - target: {fileID: 8399240550256428895, guid: 41672765a2cf9e24dbbff797c97e6d98, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3752,6 +3834,10 @@ PrefabInstance:
     - target: {fileID: 7426633614191210159, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
       propertyPath: m_Name
       value: gift drop off zone
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426633614191210159, guid: 4f77f29192182dd45ab8766d78e4fe8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

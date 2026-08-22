@@ -17,7 +17,7 @@ public class GiftDropoffZone : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        TaskManager.Instance.AddZoneToList(this);
+        TaskManager.Instance.AddGiftZoneToList(this);
         col = gameObject.GetComponent<BoxCollider>();
     }
 

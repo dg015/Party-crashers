@@ -491,6 +491,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Task
   m_remainingTime: 0
   m_scoreValue: 0
+  m_UIbar: {fileID: 4250582170059360738}
+  m_taskData: {fileID: 0}
 --- !u!1 &9205809214790641566
 GameObject:
   m_ObjectHideFlags: 0

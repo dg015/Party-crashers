@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class GuestZone : MonoBehaviour
 {
-
-
     [Header("Guests")]
     [SerializeField] private int maxNumberOfGuests;
     private int currentNumberOfGuests;
@@ -15,7 +13,8 @@ public class GuestZone : MonoBehaviour
     [Header("detection")]
     [SerializeField] private string tagName;
     [SerializeField] private bool autoFill;
-    [SerializeField] private BoxCollider boxCollider;
+    [SerializeField] private BoxCollider m_boxCollider;
+    public BoxCollider ZoneCollider { get { return m_boxCollider; } }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,9 +23,10 @@ public class GuestZone : MonoBehaviour
         {
             for (int i = 0; i < maxNumberOfGuests; i++)
             {
-                Instantiate(guestPrefab, chooseRandomPoint(boxCollider.bounds), quaternion.identity);
+                Instantiate(guestPrefab, chooseRandomPoint(m_boxCollider.bounds), quaternion.identity);
             }
         }
+        TaskManager.Instance.AddGuestZoneToList(this);
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class GuestZone : MonoBehaviour
         spawnGuest();
     }
 
-    private Vector3 chooseRandomPoint(Bounds bounds)
+    public Vector3 chooseRandomPoint(Bounds bounds)
     {
         return new Vector3
         (
@@ -53,7 +53,7 @@ public class GuestZone : MonoBehaviour
     {
         if (currentNumberOfGuests <= maxNumberOfGuests && currentTime >= spawnTime)
         {
-            Instantiate(guestPrefab, chooseRandomPoint(boxCollider.bounds), quaternion.identity);
+            Instantiate(guestPrefab, chooseRandomPoint(m_boxCollider.bounds), quaternion.identity);
         }
     }
 

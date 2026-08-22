@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
 {
+    [Header("Tasks")]
     [SerializeField] private List<TaskScriptableObject> m_taskList = new List<TaskScriptableObject>();
     [SerializeField] private List<TaskScriptableObject> m_activeTasks = new List<TaskScriptableObject>();
 
+    [Header("Zones")]
     [SerializeField] private List<GiftDropoffZone> m_dropOffZones = new List<GiftDropoffZone>();
-    
+    [SerializeField] private List<GuestZone> m_guestZones = new List<GuestZone>();
+    public List<GuestZone> GuestZoneList { get { return m_guestZones; }}
+
     [Header("UI")]
     [SerializeField] private GameObject m_taskUIPrefab;
     [SerializeField] private Transform m_taskUIList;
@@ -41,10 +45,16 @@ public class TaskManager : MonoBehaviour
         CreateTaskTime(5f);
     }
 
-    public void AddZoneToList(GiftDropoffZone zone)
+    public void AddGiftZoneToList(GiftDropoffZone zone)
     {
         m_dropOffZones.Add(zone);
         zone.GiftDeliveredEvent += CheckForActiveTask;
+    }
+
+    public void AddGuestZoneToList(GuestZone zone)
+    {
+        m_guestZones.Add(zone);
+        
     }
 
     private void OnDisable()
