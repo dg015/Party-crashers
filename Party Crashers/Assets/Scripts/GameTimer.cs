@@ -63,24 +63,16 @@ public class GameTimer : MonoBehaviour
         fillBar.fillAmount = m_timerScript.GetElapsedTime()/m_maxTimer;
     }
 
-
-    private void CheckTimer()
-    {
-        if (m_timerScript.GetElapsedTime() <= 0)
-        {
-            m_isRunning = false;
-            Debug.Log("Time's over");
-        }
-
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (m_isRunning)
         {
-            m_timerScript.TickDown(m_maxTimer,Time.deltaTime);
+            if (m_timerScript.TickDown(m_maxTimer,Time.deltaTime))
+            {
+                m_isRunning = false;
+                Debug.Log("Time's over");
+            }
         }
-        CheckTimer();
     }
 }

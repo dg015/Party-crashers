@@ -489,9 +489,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a71dee7245c4f146a43ab7a03fe1dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Task
-  m_remainingTime: 0
   m_scoreValue: 0
-  m_UIbar: {fileID: 4250582170059360738}
+  m_taskTimeLimit: 0
+  m_UIbar: {fileID: 2757538536833822011}
   m_taskData: {fileID: 0}
 --- !u!1 &9205809214790641566
 GameObject:
