@@ -10,6 +10,8 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class Wander : ActionTask {
 
+		[ParadoxNotion.Design.Header("Movement")]
+		//movement
         public BBParameter<List<GuestZone>> zoneList;
 		public BBParameter<NavMeshAgent> navAgent;
 
@@ -23,6 +25,14 @@ namespace NodeCanvas.Tasks.Actions {
 
 		private Vector3 m_travelPoint;
 		private Coroutine m_currentCoroutine;
+
+        [ParadoxNotion.Design.Header("Drinking")]
+        //Drinking
+        private bool m_isDrinking = false;
+		public bool IsDrinking { get {  return m_isDrinking; } set { m_isDrinking = value; } }
+		public BBParameter<float> amountDrunkPerBreak;
+		public BBParameter<float> drunkPecentege;
+        public BBParameter<float> drinkSpeed;
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
@@ -78,6 +88,22 @@ namespace NodeCanvas.Tasks.Actions {
 			navAgent.value.SetDestination(m_travelPoint);
 		}
 
+		private void Drink()
+		{
+			if(m_isDrinking)
+			{
+				float originalDrunkValue = drunkPecentege.value;
+				while(drunkPecentege.value <= originalDrunkValue + 15)
+				{
+					//drink overtime
+					drunkPecentege.value += Time.deltaTime * drinkSpeed.value;
+
+				}
+				m_isDrinking = false;
+            }
+		}
+
+
 		private IEnumerator WanderCoroutine()
 		{
 			while (true)
@@ -115,8 +141,9 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
+			Drink();
 
-		}
+        }
 
 		//Called when the task is disabled.
 		protected override void OnStop() {

@@ -5,7 +5,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class PlayerScore : MonoBehaviour
 {
     [SerializeField] private int m_score;
-
+    public int PlayerScoreValue { get { return m_score; } } 
     public void UpdateScore(int value)
     {
         m_score += value;
