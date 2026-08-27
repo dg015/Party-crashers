@@ -10,7 +10,7 @@
                     "name": "Walk",
                     "type": "Value",
                     "id": "09446b80-47bb-430a-9827-f4515bf8e300",
-                    "expectedControlType": "Vector3",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -46,41 +46,74 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "d8398de1-e4ff-49fd-ad45-9165f6729413",
-                    "path": "<Keyboard>/g",
+                    "id": "e35c6895-64f7-448d-a0b3-cbc7f31cf2b5",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard",
                     "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "8c779040-4861-4739-8ef6-5d7afd282828",
-                    "path": "<Keyboard>/e",
+                    "id": "b4473a36-5b2d-4afa-bd4f-b6a267ac25ab",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Interact",
+                    "groups": ";Controller",
+                    "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "0d0d4fcf-48ae-4643-ab95-6085083ff00f",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard",
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "3D Vector",
-                    "id": "1b85f380-ca1f-4c2e-822f-4b53efe3705c",
-                    "path": "3DVector",
+                    "name": "",
+                    "id": "b0dfd9c1-797a-43a1-a64e-9836808cdeec",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Controller",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e141ff61-a142-4ca6-8c0f-8aa744f111f4",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93cdd0dd-b60a-4b3b-b8af-c16925a7aaac",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Controller",
+                    "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "ce4afd21-4574-4aba-b4a9-d557b3652544",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -89,62 +122,85 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Left",
-                    "id": "f1909af9-a2b0-4b07-8d4a-0eedde51b699",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Walk",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Right",
-                    "id": "63089db7-90bd-42d7-a188-23c942835909",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Walk",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Forward",
-                    "id": "086bf185-4559-4504-a96a-57556000767c",
+                    "name": "up",
+                    "id": "0f9269a4-2351-48ec-b0f9-1bb6812b9829",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard",
                     "action": "Walk",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Backward",
-                    "id": "8205af1b-6627-4169-98d1-73a2d532cf83",
+                    "name": "down",
+                    "id": "2ae24793-27f4-4fe6-8452-764f5652d848",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "da9d7be6-8772-44d4-a2ad-bacb81ec9c69",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "8e41ceff-5991-40e4-936f-d8cd7f8d9141",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
                     "action": "Walk",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "e141ff61-a142-4ca6-8c0f-8aa744f111f4",
-                    "path": "<Keyboard>/e",
+                    "id": "ef366222-c7d0-48a5-a2bf-225a9dd1af2d",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Drop",
+                    "groups": ";Controller",
+                    "action": "Walk",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Controller",
+            "bindingGroup": "Controller",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

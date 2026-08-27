@@ -48,8 +48,8 @@ public class PlayerController : MonoBehaviour
 
     public void checkHorizontalInput(InputAction.CallbackContext context)
     {
-        
-        playerInput = context.ReadValue<Vector3>();
+        Vector2 inputData = context.ReadValue<Vector2>();
+        playerInput = new Vector3(inputData.x, playerInput.y, inputData.y);
 
     }
 

@@ -23,6 +23,12 @@ public class multyplayerManager : MonoBehaviour
             m_playerScoreList.Add(scoreScript);
     }
 
+    public void RemovePlayerScoreToList(PlayerScore scoreScript)
+    {
+        if (scoreScript != null)
+            m_playerScoreList.Remove(scoreScript);
+    }
+
 
     public PlayerScore CheckHighestScore()
     {

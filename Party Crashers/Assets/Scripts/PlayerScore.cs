@@ -11,6 +11,17 @@ public class PlayerScore : MonoBehaviour
         m_score += value;
     }
 
+
+    private void Awake()
+    {
+        multyplayerManager.Instance.AddPlayerScoreToList(this);
+    }
+
+    private void OnDestroy()
+    {
+        multyplayerManager.Instance.RemovePlayerScoreToList(this);
+    }
+
     public void ResetScore()
     {
         m_score = 0;
