@@ -26,23 +26,27 @@ public class Interactor : MonoBehaviour
     [SerializeField] private Item heldObject;
 
     //This is for the more the player holds the stronger they toss it
-    [SerializeField] private float m_currentForceTimer;
-    [SerializeField] private float m_maxForceTimer;
+    [SerializeField] private float m_minThrowForce = 3f;
+    [SerializeField] private float m_maxThrowForce = 10f;
+    [SerializeField] private float m_maxForceTimer = 2f;
+    [SerializeField] private float m_currentForce;
 
-    [SerializeField] float throwForce = 3;
-    [SerializeField] private float throwForceModifier;
-    private InputAction.CallbackContext throwActionContext;
+    [SerializeField] private float m_currentForceTimer;
+    [SerializeField] private bool m_isCharging;
+    [SerializeField] private Item m_recentlyThrownObject;
+
 
     [SerializeField] private bool canDrop;
 
     [SerializeField] private float m_consuptionDuration;
 
-    [SerializeField] private bool m_isCharging;
-
 
     public void interact()
     {
         if (m_dropCoroutine != null)
+            return;
+
+        if (heldObject != null)
             return;
 
         //Get colliding with overlapbox
@@ -56,13 +60,22 @@ public class Interactor : MonoBehaviour
         {
             if (boxColResults[i].gameObject.TryGetComponent(out Iinteractable interactObj))
             {
-                interactObj.Interact(gameObject);
-                if (boxColResults[i].transform.gameObject.GetComponent<Item>())
-                {
-                    heldObject = boxColResults[i].GetComponent<Item>();
-                    Debug.Log("Grabbed object");
-                    m_dropCoroutine = StartCoroutine(dropCoroutine());
+                Item item = boxColResults[i].GetComponent<Item>();
+
+                //for non-pickalble items
+                if (item == null) 
+                { 
+                    interactObj.Interact(gameObject); 
+                    continue; 
                 }
+
+                if (item == m_recentlyThrownObject)
+                    return;
+
+                interactObj.Interact(gameObject);
+                heldObject = item;
+                m_dropCoroutine = StartCoroutine(dropCoroutine());
+                
             }
 
         }
@@ -75,6 +88,14 @@ public class Interactor : MonoBehaviour
             canDrop = true;
         }
         m_dropCoroutine = null;
+    }
+
+    private IEnumerator ClearRecentlyThrown()
+    {
+        yield return new WaitForSeconds(0.25f);
+
+        m_recentlyThrownObject = null;
+
     }
 
     public void consumeItem()
@@ -94,58 +115,70 @@ public class Interactor : MonoBehaviour
 
     private void Throw()
     {
-        if(m_isCharging && heldObject != null)
-        {
-            m_currentForceTimer += Time.deltaTime;
-            throwForceModifier = Mathf.Clamp(m_currentForceTimer, 0, m_maxForceTimer);
-            Debug.Log("Charging");
-        }
+        if (!m_isCharging || heldObject == null)
+            return;
+
+        m_currentForceTimer += Time.deltaTime;
+        m_currentForceTimer = Mathf.Clamp(m_currentForceTimer, 0, m_maxForceTimer);
+        
     }
 
 
     public void ChargeThrow(InputAction.CallbackContext context)
     {
-        throwActionContext = context;
-        //start holding
-        if (context.performed)
+        if (context.started)
         {
+            if (heldObject == null || !canDrop)
+                return;
+
             m_isCharging = true;
+            m_currentForceTimer = 0f;
         }
-        else if( context.canceled)
+
+        if (context.canceled)
         {
+            if (!m_isCharging)
+                return;
+
             m_isCharging = false;
-            throwObject(throwForce * throwForceModifier);
+
+            float chargePercentage =
+                m_currentForceTimer / m_maxForceTimer;
+
+            m_currentForce = Mathf.Lerp(
+                m_minThrowForce,
+                m_maxThrowForce,
+                chargePercentage
+            );
+
+            throwObject();
         }
     }
 
-    public void throwObject(float force)
+    public void throwObject()
     {
-        if (!canDrop)
+        if (!canDrop || heldObject == null)
             return;
 
-        if (heldObject != null & !m_isCharging)
-        {
+        m_recentlyThrownObject = heldObject;
+        //clear parent
+        heldObject.transform.SetParent(null);
 
-            Debug.Log("throw object");
-            //clear parent
-            heldObject.transform.SetParent(null);
+        //throw object
+        Rigidbody objectRb = heldObject.GetComponent<Rigidbody>();
+        objectRb.AddForce(-m_source.right * m_currentForce, ForceMode.Impulse);
 
-            //throw object
-            Rigidbody objectRb = heldObject.GetComponent<Rigidbody>();
-            objectRb.AddForce(-m_source.right * force, ForceMode.Impulse);
-            Debug.Log("Object thrown");
+        //unfreeze positions
+        // ~ means everything except this
+        objectRb.constraints &= ~RigidbodyConstraints.FreezePosition;
 
-            //unfreeze positions
-            // ~ means everything except this
+        //reset it back to none
+        heldObject = null;
+        m_currentForceTimer = 0;
+        m_currentForce = 0;
+        canDrop = false;
 
-            objectRb.constraints &= ~RigidbodyConstraints.FreezePosition;
-
-            //reset it back to none
-            heldObject = null;
-            m_currentForceTimer = 0; 
-            throwForceModifier = 0;
-            canDrop = false;
-        }
+        StartCoroutine(ClearRecentlyThrown());
     }
 
 
