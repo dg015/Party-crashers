@@ -53,7 +53,7 @@ public class Item : MonoBehaviour, Iinteractable
 
     private void Shatter()
     {
-        Instantiate(brokenGlass,transform.position,Quaternion.identity);
+        Instantiate(brokenGlass,new Vector3 (transform.position.x,brokenGlass.transform.position.y,transform.position.z),Quaternion.identity);
         Destroy (gameObject);
 
     }

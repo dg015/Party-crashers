@@ -31,7 +31,7 @@ public class Interactor : MonoBehaviour
 
     [SerializeField] float throwForce = 3;
     [SerializeField] private float throwForceModifier;
-
+    private InputAction.CallbackContext throwActionContext;
 
     [SerializeField] private bool canDrop;
 
@@ -60,6 +60,7 @@ public class Interactor : MonoBehaviour
                 if (boxColResults[i].transform.gameObject.GetComponent<Item>())
                 {
                     heldObject = boxColResults[i].GetComponent<Item>();
+                    Debug.Log("Grabbed object");
                     m_dropCoroutine = StartCoroutine(dropCoroutine());
                 }
             }
@@ -104,11 +105,9 @@ public class Interactor : MonoBehaviour
 
     public void ChargeThrow(InputAction.CallbackContext context)
     {
-        if (!canDrop)
-            return;
-        
+        throwActionContext = context;
         //start holding
-        if(context.performed)
+        if (context.performed)
         {
             m_isCharging = true;
         }
@@ -121,16 +120,20 @@ public class Interactor : MonoBehaviour
 
     public void throwObject(float force)
     {
-        if (heldObject != null)
-        {
-            canDrop = false;
+        if (!canDrop)
+            return;
 
+        if (heldObject != null & !m_isCharging)
+        {
+
+            Debug.Log("throw object");
             //clear parent
             heldObject.transform.SetParent(null);
 
             //throw object
             Rigidbody objectRb = heldObject.GetComponent<Rigidbody>();
             objectRb.AddForce(-m_source.right * force, ForceMode.Impulse);
+            Debug.Log("Object thrown");
 
             //unfreeze positions
             // ~ means everything except this
@@ -141,6 +144,7 @@ public class Interactor : MonoBehaviour
             heldObject = null;
             m_currentForceTimer = 0; 
             throwForceModifier = 0;
+            canDrop = false;
         }
     }
 
