@@ -1,5 +1,5 @@
 
-namespace BrunoTools
+namespace BrunoToolsTimeUtil
 {
     public class TimerScript
     {

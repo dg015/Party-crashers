@@ -341,13 +341,15 @@ MonoBehaviour:
     m_Bits: 128
   interactRange: 1.21
   heldObject: {fileID: 0}
+  m_minThrowForce: 1
+  m_maxThrowForce: 15
+  m_maxForceTimer: 2
+  m_currentForce: 0
   m_currentForceTimer: 0
-  m_maxForceTimer: 3
-  throwForce: 10
-  throwForceModifier: 0
+  m_isCharging: 0
+  m_recentlyThrownObject: {fileID: 0}
   canDrop: 0
   m_consuptionDuration: 0
-  m_isCharging: 0
 --- !u!114 &4902353601195017599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,13 +395,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2592013527958735468}
         m_TargetAssemblyTypeName: Interactor, Assembly-CSharp
-        m_MethodName: throwObject
-        m_Mode: 4
+        m_MethodName: ChargeThrow
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 15
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -422,19 +424,7 @@ MonoBehaviour:
     m_ActionId: db2b5cd9-c048-4d45-b9b0-0903090708d4
     m_ActionName: 'Normal/Interact[/Keyboard/e]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2592013527958735468}
-        m_TargetAssemblyTypeName: Interactor, Assembly-CSharp
-        m_MethodName: ChargeThrow
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 04d431de-8c97-4f6b-9ad8-37c7d3bb4dfa
     m_ActionName: 'Player/Drop[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
