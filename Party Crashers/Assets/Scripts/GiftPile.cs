@@ -78,7 +78,7 @@ public class GiftPile : MonoBehaviour , Iinteractable
 
         //add silly little animation for the gift to grow on size
         newGift.transform.localScale = Vector3.zero;
-        newGift.transform.DOScale(Vector3.one, .25f);
+        newGift.transform.DOScale(giftPrefab.transform.localScale, .25f);
 
         
         Rigidbody giftRB = newGift.GetComponent<Rigidbody>();
